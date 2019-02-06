@@ -24,13 +24,13 @@ object Main {
       case (s, i) => Square(i, s.split(" ").map(_.toInt))
     }.toSet
 
-    val fours = appropriateFours(data)
+    val squaresThatSumsTo10 = appropriateFours(data)
 
-    val middleColumns = for {
-      four <- fours
+    val eightMiddleSquares = for {
+      four <- squaresThatSumsTo10
       (_1, _2, _4, _5) = (four(0), four(1), four(2), four(3))
       if _1(2) + _2(1) <= 10
-      remaining = fours.filter(l =>
+      remaining = squaresThatSumsTo10.filter(l =>
         four.toSet.intersect(l.toSet).isEmpty)
       anotherFour <- remaining
       (_8, _9, _11, _12) = (anotherFour(0), anotherFour(1), anotherFour(2), anotherFour(3))
@@ -39,7 +39,7 @@ object Main {
     } yield List(_1, _2, _4, _5, _8, _9, _11, _12)
 
     val solutions = for {
-      used <- middleColumns
+      used <- eightMiddleSquares
       remaining = data -- used
       (_1, _2, _4, _5, _8, _9, _11, _12) = (used(0), used(1), used(2), used(3), used(4), used(5), used(6), used(7))
 
