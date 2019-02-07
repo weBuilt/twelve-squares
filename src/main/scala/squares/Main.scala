@@ -10,7 +10,7 @@ object Main {
       case Right(data) =>
         println(solve(data)
           .map(_.mkString("\n"))
-          .mkString("\n"))
+          .mkString("\n\n"))
       case Left(e) =>
         e match {
           case _ : java.io.FileNotFoundException =>
