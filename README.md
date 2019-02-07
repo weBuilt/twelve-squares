@@ -1,2 +1,2 @@
 all info in README.pdf
-usage: sbt run fileName(optional)
+usage: sbt "run fileName(optional)"
