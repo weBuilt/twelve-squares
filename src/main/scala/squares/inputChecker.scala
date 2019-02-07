@@ -20,7 +20,7 @@ object inputChecker {
       }.toSet
       if ((data.size != 12) &&
         (!data.forall(s => (s.corners.length == 4) &&
-          s.corners.forall(i => i >= 0 && i < 10))))
+          s.corners.forall(i => (0 until 10).contains(i)))))
         throw INVALID_INPUT_EXCEPTION
       Right(data)
     } catch {
